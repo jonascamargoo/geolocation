@@ -11,8 +11,7 @@ const createAuthor = async (req: Request, res: Response, next: NextFunction) => 
     });
 
     try {
-        const author_1 = await author
-            .save();
+        const author_1 = await author.save();
         return res.status(201).json({ author });
     } catch (error) {
         return res.status(500).json({ error });
@@ -42,28 +41,24 @@ const readAll = async (req: Request, res: Response, next: NextFunction) => {
 const updateAuthor = async (req: Request, res: Response, next: NextFunction) => {
     const authorId = req.params.authorId;
 
-    return Author.findById(authorId)
-        .then((author) => {
-            if (author) {
-                author.set(req.body);
+    try {
+        const author = await Author.findByIdAndUpdate(authorId, req.body);
+        return (author ? res.status(200).json({ author, message: 'Updated'}) : res.status(404).json({ message: 'Not Found'}))
+    } catch (error) {
+        return res.status(500).json({ error });
+    }
+}
 
-                return author
-                    .save()
-                    .then((author) => res.status(201).json({ author }))
-                    .catch((error) => res.status(500).json({ error }));
-            } else {
-                return res.status(404).json({ message: 'not found' });
-            }
-        })
-        .catch((error) => res.status(500).json({ error }));
-};
 
 const deleteAuthor = async (req: Request, res: Response, next: NextFunction) => {
     const authorId = req.params.authorId;
 
-    return Author.findByIdAndDelete(authorId)
-        .then((author) => (author ? res.status(201).json({ author, message: 'Deleted' }) : res.status(404).json({ message: 'not found' })))
-        .catch((error) => res.status(500).json({ error }));
-};
+    try {
+        const author = await Author.findByIdAndDelete(authorId);
+        return (author ? res.status(200).json({ author, message: 'Deleted' }) : res.status(404).json({ message: 'Not Found'}))
+    } catch (error) {
+        return res.status(500).json({ error });
+    }
+}
 
 export default { createAuthor, readAuthor, readAll, updateAuthor, deleteAuthor };

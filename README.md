@@ -1,5 +1,7 @@
 # ze-gis-api
-configurar o prettier
+converter de then para async await;
+passar o agile test do notion para o obsidian;
+configurar o prettier;
 
 #### Semantic Commit Messages
 feat: (new feature for the user, not a new feature for build script)
