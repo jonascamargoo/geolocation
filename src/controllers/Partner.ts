@@ -18,9 +18,9 @@ const createPartner = async (req: Request, res: Response, next: NextFunction) =>
         tradingName,
         ownerName,
         document,
-        //coverageArea
+        coverageArea,
         address
-        
+
     });
 
     try {

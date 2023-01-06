@@ -1,5 +1,4 @@
 import mongoose, { Document, Mongoose, Schema } from 'mongoose';
-import geocoder from '../utils/geocoder';
 
 export interface IPartner {
     partnerId: number;
@@ -7,8 +6,8 @@ export interface IPartner {
     ownerName: string;
     document: string;
     coverageArea: {
-        type: string;
-        coordinates: number[][];
+        type: string
+        coordinates: [[[[number]]]];
     },
     address: {
         type: string,
@@ -28,20 +27,18 @@ const PartnerSchema: Schema = new Schema(
         tradingName: { type: String, required: [true, 'Please add a partner trading name'] },
         ownerName: { type: String, required: true },
         document: { type: String, required: true, unique: true },
-        // coverageArea: {
-        //     type: {
-        //         type: String,
-        //         enum: ['MultiPolygon'],
-        //         required: true
-        //     },
-        //     coordinates: {
-        //         type: [
-        //             []
-        //         ],
-        //         index: '2dsphere',
-        //         required: true
-        //     }
-        // }
+        coverageArea: {
+            type: {
+                type: String,
+                required: true,
+                enum: ['MultiPolygon']  
+            },
+            coordinates: {
+                type: [[[[Number]]]],
+                required: true,
+                index: '2dsphere'
+            }
+        },
         address: {
             type: {
                 type: String,
@@ -49,7 +46,7 @@ const PartnerSchema: Schema = new Schema(
                 enum: ['Point']
             },
             coordinates: {
-                type: [Number],
+                type: [[[[Number]]]],
                 required: true,
                 index: '2dsphere'
             }
@@ -59,23 +56,5 @@ const PartnerSchema: Schema = new Schema(
         versionKey: false
     }
 );
-
-
-// Geocode & create location
-// PartnerSchema.pre('save', async function(next) {
-//     const loc = await geocoder.geocode(this.address);
-//     this.location = {
-//       type: 'Point',
-//       coordinates: [loc[0].longitude, loc[0].latitude],
-//       formattedAddress: loc[0].formattedAddress
-//     };
-  
-//     // Do not save address
-//     this.address = undefined;
-//     next();
-// });
-
-//devo fazer outro desse para coverageArea?
-
 
 export default mongoose.model<IPartnerModel>('Partner', PartnerSchema);

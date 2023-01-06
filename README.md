@@ -11,3 +11,14 @@ style: (formatting, missing semi colons, etc; no production code change)
 refactor: (refactoring production code, eg. renaming a variable)
 test: (adding missing tests, refactoring tests; no production code change)
 chore: (updating grunt tasks etc; no production code change)
+
+#### mapquest api
+https://developer.mapquest.com/user/me/apps
+
+#### Possíveis erros
+
+possível erro no metodo createPartner, pois usei save nele e usei save no model tb
+
+### ensina tudo que preciso pra esse software
+https://blog.devgenius.io/an-immersive-guide-to-geospatial-mongodb-data-9ee3529aab9d
+
