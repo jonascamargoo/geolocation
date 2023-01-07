@@ -83,7 +83,7 @@ export interface IPartner {
 }
 
 
-const PartnerSchema = new mongoose.Schema({
+const PartnerSchema: Schema = new mongoose.Schema({
   partnerId: {
     type: Number,
     unique: true,
