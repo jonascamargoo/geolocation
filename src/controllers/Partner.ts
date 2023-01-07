@@ -2,7 +2,6 @@ import { NextFunction, Request, Response } from 'express';
 import mongoose from 'mongoose';
 import Partner from '../models/Partner';
 
-
 // 1.2. Carregar parceiro pelo id:
 // Retornar um parceiro específico baseado no seu campo id com todos os campos apresentados acima.
 
@@ -13,7 +12,7 @@ import Partner from '../models/Partner';
 //createPartner
 const createPartner = async (req: Request, res: Response, next: NextFunction) => {
     const { tradingName,  ownerName, document, coverageArea, address } = req.body;
-    
+        
     const partner = new Partner({
         _id: new mongoose.Types.ObjectId(),
         tradingName,

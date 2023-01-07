@@ -68,49 +68,78 @@ import mongoose, { Document, Schema } from 'mongoose';
 // ---------------
 
 
+interface CoverageArea {
+    type: string;
+    coordinates: number[][][][];
+  }
   
-export interface IPartner {
+  interface Address {
+    type: string;
+    coordinates: number[];
+  }
+  
+  interface Brewery {
     id: number;
     tradingName: string;
     ownerName: string;
     document: string;
-    coverageArea: {
-        type: String,
-        coordinates: number[][][][]
-    };
-    address: {
-        type: String,
-        coordinates: number[]
-    };
-    
+    coverageArea: CoverageArea;
+    address: Address;
 }
+  
 
-
-const partnerSchema: Schema = new mongoose.Schema({
-  partnerId: { type: Number, unique: true, trim: true },
-  tradingName: { type: String, required: true },
-  ownerName: { type: String, required: true },
-  document: { type: String, required: true },
-  coverageArea: {
-    type: { type: String, required: true },
-    coordinates: {
-        type: [
-            [[[Array], [Array], [Array], [Array]]],
-            [[[Array], [Array], [Array], [Array], [Array]]]
-        ],
-        required: true
-    }
+const coverageAreaSchema = new mongoose.Schema({
+  type: {
+    type: String,
+    required: true
   },
-  address: {
-    type: {
-        type: String,
-        required: true
-    },
-    coordinates: {
-        type: [Number],
-        required: true
-    }
+  coordinates: {
+    type:[
+        [[[Array], [Array], [Array], [Array] ] ],
+        [ [ [Array], [Array], [Array], [Array], [Array] ]]
+    ],
+    required: true
   }
 });
 
-export default mongoose.model('Partner', partnerSchema);
+const addressSchema = new mongoose.Schema({
+  type: {
+    type: String,
+    required: true
+  },
+  coordinates: {
+    type: [Number],
+    required: true
+  }
+});
+
+const brewerySchema = new mongoose.Schema({
+  partnerId: {
+    type: Number,
+    unique: true,
+    trim: true,
+    
+  },
+  tradingName: {
+    type: String,
+    required: true
+  },
+  ownerName: {
+    type: String,
+    required: true
+  },
+  document: {
+    type: String,
+    required: true
+  },
+  coverageArea: {
+    type: coverageAreaSchema,
+    required: true
+  },
+  address: {
+    type: addressSchema,
+    required: true
+  }
+});
+
+export default mongoose.model('Brewery', brewerySchema);
