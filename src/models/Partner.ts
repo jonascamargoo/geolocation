@@ -83,48 +83,49 @@ export interface IPartner {
 }
 
 
-const PartnerSchema: Schema = new mongoose.Schema({
-  partnerId: {
-    type: Number,
-    unique: true,
-    trim: true,
-    
-  },
-  tradingName: {
-    type: String,
-    required: true
-  },
-  ownerName: {
-    type: String,
-    required: true
-  },
-  document: {
-    type: String,
-    required: true
-  },
-  coverageArea: {
-    type: {
-      type: String,
-      required: true
+const PartnerSchema: Schema = new mongoose.Schema(
+  {
+    partnerId: {
+      type: Number,
+      unique: true,
+      trim: true,
     },
-    coordinates: {
-      type:[
-          [[[Array], [Array], [Array], [Array] ] ],
-          [ [ [Array], [Array], [Array], [Array], [Array] ]]
-      ],
-      required: true
-    }
-  },
-  address: {
-    type: {
+    tradingName: {
       type: String,
-      required: true
+      required: [true, 'Please add a partner trading name']
     },
-    coordinates: {
-      type: [Number],
-      required: true
+    ownerName: {
+      type: String,
+      required: [true, 'Please add a partner owner name']
+    },
+    document: {
+      type: String,
+      required: [true, 'Please add a unique document']
+    },
+    coverageArea: {
+      type: {
+        type: String,
+        required: true
+      },
+      coordinates: {
+        type:[
+            [[[Array], [Array], [Array], [Array] ] ],
+            [ [ [Array], [Array], [Array], [Array], [Array] ]]
+        ],
+        required: true
+      }
+    },
+    address: {
+      type: {
+        type: String,
+        required: true
+      },
+      coordinates: {
+        type: [Number],
+        required: true
+      }
     }
   }
-});
+);
 
 export default mongoose.model('Partner', PartnerSchema);
