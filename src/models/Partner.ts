@@ -86,7 +86,7 @@ interface CoverageArea {
     coverageArea: CoverageArea;
     address: Address;
 }
-  
+
 
 const coverageAreaSchema = new mongoose.Schema({
   type: {
@@ -113,7 +113,7 @@ const addressSchema = new mongoose.Schema({
   }
 });
 
-const brewerySchema = new mongoose.Schema({
+const brewerySchema: Schema = new mongoose.Schema({
   partnerId: {
     type: Number,
     unique: true,
