@@ -67,7 +67,7 @@ import mongoose, { Document, Schema } from 'mongoose';
 
 // ---------------
 
-interface IPartner {
+export interface IPartner {
   id: number;
   tradingName: string;
   ownerName: string;
@@ -83,7 +83,7 @@ interface IPartner {
 }
 
 
-const brewerySchema = new mongoose.Schema({
+const PartnerSchema = new mongoose.Schema({
   partnerId: {
     type: Number,
     unique: true,
@@ -127,4 +127,4 @@ const brewerySchema = new mongoose.Schema({
   }
 });
 
-export default mongoose.model('Brewery', brewerySchema);
+export default mongoose.model('Brewery', PartnerSchema);
