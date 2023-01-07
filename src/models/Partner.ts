@@ -93,6 +93,7 @@ const PartnerSchema: Schema = new mongoose.Schema(
             [[[Array], [Array], [Array], [Array] ] ],
             [ [ [Array], [Array], [Array], [Array], [Array] ]]
         ],
+        index: 'geoHaystack',
         required: true
       }
     },
