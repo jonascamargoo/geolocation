@@ -127,4 +127,4 @@ const PartnerSchema = new mongoose.Schema({
   }
 });
 
-export default mongoose.model('Brewery', PartnerSchema);
+export default mongoose.model('Partner', PartnerSchema);
