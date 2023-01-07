@@ -1,24 +1,5 @@
 import mongoose, { Document, Schema } from 'mongoose';
 
-// export interface IPartner {
-//     partnerId: number;
-//     tradingName: string;
-//     ownerName: string;
-//     document: string;
-//     coverageArea: {
-//         type: string
-//         coordinates: number[][][][];
-//     },
-//     address: {
-//         type: string,
-//         coordinates: number[];
-//     }
-// }
-
-// export interface IPartnerModel extends IPartner, Document {}
-
-
-
 // const PartnerSchema: Schema = new Schema(
 //     {
 //         partnerId: {
@@ -122,6 +103,7 @@ const PartnerSchema: Schema = new mongoose.Schema(
       },
       coordinates: {
         type: [Number],
+        index: '2dsphere',
         required: true
       }
     }
