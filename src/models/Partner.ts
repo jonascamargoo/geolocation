@@ -67,51 +67,21 @@ import mongoose, { Document, Schema } from 'mongoose';
 
 // ---------------
 
-
-interface CoverageArea {
+interface IPartner {
+  id: number;
+  tradingName: string;
+  ownerName: string;
+  document: string;
+  coverageArea: {
     type: string;
     coordinates: number[][][][];
-  }
-  
-  interface Address {
+  };
+  address: {
     type: string;
     coordinates: number[];
-  }
-  
-  interface Brewery {
-    id: number;
-    tradingName: string;
-    ownerName: string;
-    document: string;
-    coverageArea: CoverageArea;
-    address: Address;
+  };
 }
-  
 
-const coverageAreaSchema = new mongoose.Schema({
-  type: {
-    type: String,
-    required: true
-  },
-  coordinates: {
-    type:[
-        [[[Array], [Array], [Array], [Array] ] ],
-        [ [ [Array], [Array], [Array], [Array], [Array] ]]
-    ],
-    required: true
-  }
-});
-
-const addressSchema = new mongoose.Schema({
-  type: {
-    type: String,
-    required: true
-  },
-  coordinates: {
-    type: [Number],
-    required: true
-  }
-});
 
 const brewerySchema = new mongoose.Schema({
   partnerId: {
@@ -133,12 +103,27 @@ const brewerySchema = new mongoose.Schema({
     required: true
   },
   coverageArea: {
-    type: coverageAreaSchema,
-    required: true
+    type: {
+      type: String,
+      required: true
+    },
+    coordinates: {
+      type:[
+          [[[Array], [Array], [Array], [Array] ] ],
+          [ [ [Array], [Array], [Array], [Array], [Array] ]]
+      ],
+      required: true
+    }
   },
   address: {
-    type: addressSchema,
-    required: true
+    type: {
+      type: String,
+      required: true
+    },
+    coordinates: {
+      type: [Number],
+      required: true
+    }
   }
 });
 
