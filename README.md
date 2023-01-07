@@ -22,3 +22,6 @@ possível erro no metodo createPartner, pois usei save nele e usei save no model
 ### ensina tudo que preciso pra esse software
 https://blog.devgenius.io/an-immersive-guide-to-geospatial-mongodb-data-9ee3529aab9d
 
+### nota de bizarrice
+Quando eu adiciono o campo index: '2dshpere' no schema, da erro e a coleção simplesmente não aceita outro parceiro. Para resolver, preciso selecionar outro nome para a coleção em export default mongoose.model('Partner', PartnerSchema) para export default mongoose.model('Brewery', PartnerSchema) por exemplo. A coleção é recriada e o códigol volta a funcionar (?)
+
