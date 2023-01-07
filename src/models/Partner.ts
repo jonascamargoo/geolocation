@@ -1,4 +1,4 @@
-import mongoose, { Document, Mongoose, Schema } from 'mongoose';
+import mongoose, { Document, Schema } from 'mongoose';
 
 export interface IPartner {
     partnerId: number;
@@ -31,10 +31,10 @@ const PartnerSchema: Schema = new Schema(
             type: {
                 type: String,
                 required: true,
-                enum: ['MultiPolygon']  
+                enum: ['MultiPolygon']
             },
             coordinates: {
-                type: [[[[Number]]]],
+                type: Number,
                 required: true,
                 index: '2dsphere'
             }
@@ -46,7 +46,7 @@ const PartnerSchema: Schema = new Schema(
                 enum: ['Point']
             },
             coordinates: {
-                type: [[[[Number]]]],
+                type: [Number],
                 required: true,
                 index: '2dsphere'
             }
