@@ -1,8 +1,12 @@
 import express from 'express';
-import createPartner from '../controllers/Partner';
+import controller from '../controllers/Partner';
 
 const router = express.Router();
 
-router.post('/create', createPartner);
+router
+    .post('/create', controller.createPartner)
+    .get('/get/:id', controller.loadPartnerById)
+    
+
 
 export = router;

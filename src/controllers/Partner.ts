@@ -2,9 +2,6 @@ import { NextFunction, Request, Response } from 'express';
 import mongoose from 'mongoose';
 import Partner from '../models/Partner';
 
-// 1.2. Carregar parceiro pelo id:
-// Retornar um parceiro específico baseado no seu campo id com todos os campos apresentados acima.
-
 // 1.3. Buscar parceiro:
 // Dada uma localização pelo usuário da API (coordenadas long e lat), procure o parceiro que esteja mais próximo e que cuja área de cobertura inclua a localização.
 
@@ -31,12 +28,22 @@ const createPartner = async (req: Request, res: Response, next: NextFunction) =>
     }
 };
 
-export default createPartner;
+const loadPartnerById = async (req: Request, res: Response, next: NextFunction) => {
+    const partnerId = req.params.id;
+    try {
+        const partner = await Partner.findById(partnerId);
+        return (partner ? res.status(200).json({ partner }) : res.status(404).json({ message: 'Not Found' }));
+    } catch (error) {
+        return res.status(500).json({ error });
+    }
+}
 
+const searchNearestPartner = async (req: Request, res: Response, next: NextFunction) => {
 
+}
 
-//metodo 2
-//loadParntnerById: Return a specific partner by its id with all the fields presented above.
+export default { createPartner, loadPartnerById, searchNearestPartner };
+
 
 //metodo3
 // searchPartner: Given a specific location (coordinates long and lat), search the nearest partner which the coverage area includes the location

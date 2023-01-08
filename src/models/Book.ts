@@ -1,4 +1,6 @@
 import mongoose, { Document, Schema } from 'mongoose';
+//o mongoose tem um export default, que to chamando de mongoose. Document e Schema n sao default, portanto ficam entre chaves 
+
 
 export interface IBook {
     title: string;
