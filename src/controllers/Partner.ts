@@ -14,7 +14,7 @@ const createPartner = async (req: Request, res: Response, next: NextFunction) =>
     const { tradingName,  ownerName, document, coverageArea, address } = req.body;
         
     const partner = new Partner({
-        _id: new mongoose.Types.ObjectId(),
+        //_id: new mongoose.Types.ObjectId(),
         tradingName,
         ownerName,
         document,

@@ -1,55 +1,7 @@
 import mongoose, { Document, Schema } from 'mongoose';
 
-// const PartnerSchema: Schema = new Schema(
-//     {
-//         partnerId: {
-//             type: Number,
-//             unique: true,
-//             trim: true,
-//         },
-//         tradingName: { type: String, required: [true, 'Please add a partner trading name'] },
-//         ownerName: { type: String, required: true },
-//         document: { type: String, required: true, unique: true },
-//         coverageArea: {
-//             type: {
-//                 type: String,
-//                 required: true,
-//                 enum: ['MultiPolygon']
-//             },
-//             coordinates: {
-//                 type:[
-//                     [[[Number], [Number], [Number], [Number]]],
-//                     [[[Number], [Number], [Number], [Number], [Number]]]
-//                 ],
-//                 required: true,
-//                 index: '2dsphere'
-//             }
-//         },
-//         address: {
-//             type: {
-//                 type: String,
-//                 required: true,
-//                 enum: ['Point']
-//             },
-//             coordinates: {
-//                 type: [Number],
-//                 required: true,
-//                 index: '2dsphere'
-//             }
-//         }
-//     },
-//     {
-//         versionKey: false
-//     }
-// );
-
-// export default mongoose.model<IPartnerModel>('Partner', PartnerSchema);
-
-
-// ---------------
-
 export interface IPartner {
-  id: number;
+  partnerId: string;
   tradingName: string;
   ownerName: string;
   document: string;
@@ -63,11 +15,10 @@ export interface IPartner {
   };
 }
 
-
 const PartnerSchema: Schema = new mongoose.Schema(
   {
     partnerId: {
-      type: Number,
+      type: String,
       unique: true,
       trim: true,
     },
@@ -81,7 +32,8 @@ const PartnerSchema: Schema = new mongoose.Schema(
     },
     document: {
       type: String,
-      required: [true, 'Please add a unique document']
+      required: [true, 'Please add a unique document'],
+      unique: true
     },
     coverageArea: {
       type: {
@@ -90,8 +42,8 @@ const PartnerSchema: Schema = new mongoose.Schema(
       },
       coordinates: {
         type:[
-            [[[Array], [Array], [Array], [Array] ] ],
-            [ [ [Array], [Array], [Array], [Array], [Array] ]]
+          [[[Array], [Array], [Array], [Array]]],
+          [[[Array], [Array], [Array], [Array], [Array]]]
         ],
         index: 'geoHaystack',
         required: true
@@ -108,6 +60,9 @@ const PartnerSchema: Schema = new mongoose.Schema(
         required: true
       }
     }
+  },
+  {
+    versionKey: false
   }
 );
 
