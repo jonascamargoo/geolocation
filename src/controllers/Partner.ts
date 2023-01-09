@@ -11,12 +11,12 @@ const createPartner = async (req: Request, res: Response, next: NextFunction) =>
     const { tradingName,  ownerName, document, coverageArea, address } = req.body;
         
     const partner = new Partner({
-        //_id: new mongoose.Types.ObjectId(),
-        tradingName,
-        ownerName,
-        document,
-        coverageArea,
-        address
+			_id: new mongoose.Types.ObjectId(),
+			tradingName,
+			ownerName,
+			document,
+			coverageArea,
+			address
 
     });
 
@@ -38,9 +38,69 @@ const loadPartnerById = async (req: Request, res: Response, next: NextFunction) 
     }
 }
 
+const withinPolygons = () => {
+	//separar o array de polígonos (multipoligyn) pra, finalmente, utilizar o method whitin do mongoose
+	try {
+		
+	} catch (error) {
+		
+	}
+	
+}
+
 const searchNearestPartner = async (req: Request, res: Response, next: NextFunction) => {
 
+	//vou receber um local por parâmetro, restringir os parceiros daquela área (reduzir query) e, finalmente, procurar o mais próximo
+	//const coordinates = req.body;
+	try {
+		const nearest = await Partner.find({
+				address:
+						{ $near :
+								{
+									$geometry: {
+										type: "Point",
+										coordinates: [ -68, 35 ] 
+										
+										// coordinates: coordinates
+									}
+								}
+						}
+		});
+		return (nearest ? res.status(200).json({ nearest, message: 'It is the nearest' }) : res.status(404).json({ message: 'Not Found' }));
+
+	} catch (error) {
+		res.status(500).json({ error });
+	}
+
 }
+
+
+//para usar após o within
+// const query = {
+//   address: {
+//     $near: {
+//       $geometry: {
+//         type: "Point",
+//         coordinates: [longitude, latitude]
+//       },
+//       $maxDistance: distanceInMeters
+//     }
+//   }
+// };
+
+// const nearPartner = async (req: Request, res: Response, next: NextFunction ) {
+// 	try {
+// 		Partner.find(query, (error, places) => {
+// 			if (error) {
+// 				// handle error
+// 			} else {
+// 				// 'places' is an array of documents with GeoJSON 'location' fields
+// 			}
+// 		});
+// 	} catch (error) {
+		
+// 	}
+// }
 
 export default { createPartner, loadPartnerById, searchNearestPartner };
 

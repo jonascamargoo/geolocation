@@ -1,7 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
 
 export interface IPartner {
-  partnerId: string;
+  partnerId: String;
   tradingName: string;
   ownerName: string;
   document: string;
@@ -18,7 +18,7 @@ export interface IPartner {
 const PartnerSchema: Schema = new mongoose.Schema(
   {
     partnerId: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
       unique: true,
       trim: true,
     },
@@ -64,6 +64,9 @@ const PartnerSchema: Schema = new mongoose.Schema(
   {
     versionKey: false
   }
+
 );
+
+
 
 export default mongoose.model('Partner', PartnerSchema);
