@@ -2,6 +2,12 @@ import { NextFunction, Request, Response } from 'express';
 import mongoose from 'mongoose';
 import Partner from '../models/Partner';
 
+<<<<<<< HEAD
+=======
+// 1.2. Carregar parceiro pelo id:
+// Retornar um parceiro específico baseado no seu campo id com todos os campos apresentados acima.
+
+>>>>>>> parent of aaf58c0... feat: model is working (finally)
 // 1.3. Buscar parceiro:
 // Dada uma localização pelo usuário da API (coordenadas long e lat), procure o parceiro que esteja mais próximo e que cuja área de cobertura inclua a localização.
 
