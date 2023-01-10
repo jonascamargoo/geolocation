@@ -50,13 +50,14 @@ const loadPartnerById = async (req: Request, res: Response, next: NextFunction) 
 
 
 	const searchNearestPartner = async (req: Request, res: Response, next: NextFunction) => {
+		const coordinates = req.body.coordinates;
 		try {
 			const nearestPartner = await Partner.findOne(
 				{
 					address:
 						{ $near :
 							{
-								$geometry: { type: "Point", coordinates:  [-47.01634, -22.922613] },
+								$geometry: { type: "Point", coordinates: coordinates },
 								
 							}
 							
