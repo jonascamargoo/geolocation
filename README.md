@@ -25,3 +25,25 @@ https://blog.devgenius.io/an-immersive-guide-to-geospatial-mongodb-data-9ee3529a
 ### nota de bizarrice
 Quando eu adiciono o campo index: '2dshpere' no coverageArea.coordinates, da erro e a coleção simplesmente não aceita outro parceiro. Para resolver, preciso selecionar outro nome para a coleção em export default mongoose.model('Partner', PartnerSchema) para export default mongoose.model('Brewery', PartnerSchema) por exemplo, e deletar a coleção partners no mongo. A coleção é recriada e o códigol volta a funcionar (?)
 
+
+
+### como fazer o 3 método?
+vou analisar se o ponto enviado está na mesma ceverageArea de cada documento. Para fazer isso, vou quebrar o array de polígonos em polygonos.
+
+[[ [[Array], [Array], [Array], [Array]]],[ [ [Array], [Array], [Array], [Array], [Array] ]]]
+
+
+
+### caso n de certo
+const turf = require('@turf/turf');
+
+// ...
+
+const polygons = partner.splitCoverageArea();
+
+for (const polygon of polygons) {
+  const point = turf.point([x, y]);
+  if (turf.booleanContains(polygon, point)) {
+    console.log('O ponto está contido dentro do polígono!');
+  }
+}
