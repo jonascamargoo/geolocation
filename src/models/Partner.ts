@@ -77,6 +77,6 @@ const partnerSchema = new mongoose.Schema ({
   }
 });
 
-partnerSchema.index({ address: '2dsphere' });
+partnerSchema.index({ address: '2dsphere', coverageArea: 'geoHaystack' });
 
 export default mongoose.model('Partner', partnerSchema);
