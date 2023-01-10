@@ -77,4 +77,6 @@ const partnerSchema = new mongoose.Schema ({
   }
 });
 
+partnerSchema.index({ address: '2dsphere' });
+
 export default mongoose.model('Partner', partnerSchema);

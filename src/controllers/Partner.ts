@@ -59,6 +59,7 @@ const loadPartnerById = async (req: Request, res: Response, next: NextFunction) 
 								$geometry: { type: "Point", coordinates:  [-47.01634, -22.922613] },
 								
 							}
+							
 						}
 				}
 			).exec();
