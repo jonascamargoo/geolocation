@@ -25,7 +25,7 @@ export interface IPartner {
   }
 }
 
-const partnerSchema = new mongoose.Schema ({
+const partnerSchema: Schema = new mongoose.Schema ({
   partnerId: {
     type: Number,
     unique: true,
