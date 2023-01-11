@@ -1,27 +1,27 @@
 import mongoose, {  Schema } from 'mongoose';
 
 export interface IPartner {
-  id: number;
+  id: number,
   tradingName: {
     type: String,
     required: [true, 'Please add a partner trading name']
-  };
+  },
   ownerName: {
     type: String,
     required: [true, 'Please add a partner owner name']
-  };
+  },
   document: {
     type: String,
     required: [true, 'Please add a document'],
     unique: true
-  };
+  },
   coverageArea: {
     type: string,
-    coordinates: number[][][][];
-  };
+    coordinates: number[][][][]
+  },
   address: {
-    type: string;
-    coordinates: number[];
+    type: string,
+    coordinates: number[]
   }
 }
 
