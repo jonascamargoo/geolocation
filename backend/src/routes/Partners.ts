@@ -8,4 +8,4 @@ router
     .get('/get/:id', controller.loadPartnerById)
     .get('/nearest', controller.searchNearestPartner)
     
-export = router;
+export default router;
