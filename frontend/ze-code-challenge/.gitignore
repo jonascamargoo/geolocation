@@ -12,6 +12,9 @@
 /.next/
 /out/
 
+notes.txt
+flow.dio
+
 # production
 /build
 
