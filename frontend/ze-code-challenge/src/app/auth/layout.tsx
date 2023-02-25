@@ -1,13 +1,13 @@
 import { ReactNode } from "react";
 
-interface AuthLayoutProps {
+interface SignInLayoutProps {
     children: ReactNode
 }
 
-export default function AuthLayoutProps({ children }: AuthLayoutProps ) {
+export default function SignInLayoutProps({ children }: SignInLayoutProps ) {
     return (
         <div>
-            <h1>Auth</h1>
+            <h1>??</h1>
             {children}
         </div>
     )
