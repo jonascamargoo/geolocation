@@ -1,11 +1,11 @@
 {
-  "name": "ze-gis-api",
+  "name": "geolocator",
   "version": "1.0.0",
   "main": "src/server.ts",
-  "repository": "https://github.com/jonascamargoo/ze-gis-api.git",
+  "repository": "https://github.com/jonascamargoo/geolocator.git",
   "author": "jonascamargoo <jonascamargo999@gmail.com>",
   "scripts": {
-    "test": "vitest",
+    "test": "test",
     "build": "rm -rf ./dist && tsc",
     "start": "node dist/server.js"
   },
