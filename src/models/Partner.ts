@@ -1,6 +1,5 @@
 import mongoose, {  Schema } from 'mongoose';
 
-
 export interface IPartner {
   id: number,
   tradingName: string,
@@ -16,7 +15,7 @@ export interface IPartner {
   }
 }
 
-//Quando eu adiciono o campo index: '2dshpere' no coverageArea.coordinates, da erro e a coleção simplesmente não aceita outro parceiro. Para resolver, preciso selecionar outro nome para a coleção em export default mongoose.model('Partner', PartnerSchema) para export default mongoose.model('Brewery', PartnerSchema) por exemplo, e deletar a coleção partners no mongo.
+// When I add the index: '2dsphere' field to coverageArea.coordinates, an error occurs, and the collection simply does not accept another partner. To resolve this, I need to select another name for the collection in export default mongoose.model('Partner', PartnerSchema) to export default mongoose.model('Brewery', PartnerSchema), for example, and delete the partners collection in MongoDB.
 
 const partnerSchema: Schema = new mongoose.Schema ({
   partnerId: {
