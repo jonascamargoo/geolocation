@@ -1,7 +1,6 @@
 import mongoose, {  Schema } from 'mongoose';
 
 
-
 export interface IPartner {
   id: number,
   tradingName: string,

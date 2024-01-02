@@ -1,5 +1,3 @@
-//lib pessoal para logging customizado
-
 export default class Logging {
     public static info = (args: any) =>
         console.log(

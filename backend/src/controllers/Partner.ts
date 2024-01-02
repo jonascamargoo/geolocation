@@ -33,6 +33,15 @@ import Partner from '../models/Partner';
 		}
 	}
 
+	const loadPartners = async (req: Request, res: Response) => {
+		try {
+			const partners = await Partner.find();
+			return (partners ? res.status(200).json({ partners }) : res.status(404).json({ message: 'Not Found'}));
+		} catch (error) {
+			res.status(500).json({ error });
+		}
+	}
+
 	const searchNearestPartner = async (req: Request, res: Response) => {
 		const coordinates = req.body.coordinates;
 		try {
@@ -54,4 +63,4 @@ import Partner from '../models/Partner';
 		}
 	}
 
-export default { createPartner, loadPartnerById, searchNearestPartner };
+export default { createPartner, loadPartners, loadPartnerById, searchNearestPartner };
