@@ -1,0 +1,1 @@
+Tem que criar um projeto e dentro do projeto um cluster e substituir no .env ou diretamente no arquivo config.
