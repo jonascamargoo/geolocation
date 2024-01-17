@@ -1,6 +1,6 @@
 # Geolocation - API
 
-An API developed in TypeScript, using MongoDB, created as a solution for partner management.
+An API developed in TypeScript, using MongoDB, created as a solution for partners management.
 
 ## Features
 
