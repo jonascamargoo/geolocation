@@ -38,4 +38,4 @@ An API developed in TypeScript, using MongoDB, created as a solution for partner
 
 ## Usage
 
-To start the server, we need to compile using `yarn build`, and subsequently, use `yarn start` to initialize the server. Additionally, it's also possible to use `yarn dev` for the development environment.
+To start the server, we need to compile using `npm run start` to init the server. Additionally, it's also possible to use `yarn dev` for the development environment.
